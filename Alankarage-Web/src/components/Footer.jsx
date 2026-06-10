@@ -2,10 +2,10 @@ import React from 'react';
 
 export default function Footer() {
   return (
-    <section className="flex flex-col md:flex-row min-h-screen w-full bg-white text-gray-900 antialiased font-sans">
+    <section className="flex flex-col md:flex-row min-h-screen md:h-screen w-full bg-white text-gray-900 antialiased font-sans">
       
       {/* Left Column: Image Area */}
-      <div className="flex-1 relative min-h-[350px] md:min-h-full bg-gray-200">
+      <div className="flex-1 relative min-h-[350px] md:min-h-full md:h-full bg-gray-200">
         <div 
           className="absolute inset-0 bg-cover bg-center grayscale"
           style={{ 
