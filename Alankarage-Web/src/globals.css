@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --font-inter: 'Inter', sans-serif;
+  --color-gold: #dcb349;
+}
+
+/* Google Font import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+/* Landing background image — needs raw CSS for url() */
+.landing-bg {
+  background-image: url('./assets/Landing.png');
+}
+
+/* Complex gradient overlay — too long for inline */
+.landing-overlay {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.3) 100%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+/* Timeline marker line + dot — pseudo-elements need raw CSS */
+.timeline-marker {
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 1.5px;
+  background-color: var(--color-gold);
+  z-index: 2;
+}
+
+.timeline-marker::after {
+  content: '';
+  width: 9px;
+  height: 9px;
+  background-color: var(--color-gold);
+  border-radius: 50%;
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Timeline vertical line — pseudo-element positioning */
+.timeline-line {
+  position: absolute;
+  right: 3px;
+  top: 30px;
+  bottom: 30px;
+  width: 1px;
+  background-color: #e5e5e5;
+  z-index: 1;
+}
+
+/* Diamond shape */
+.diamond {
+  width: 8px;
+  height: 8px;
+  background-color: black;
+  transform: rotate(45deg);
+}
