@@ -5,6 +5,7 @@ import Services from './components/Services';
 import Intro from './components/Intro';
 import WhyChooseUs from './components/WhyChooseUs';
 import Subsidiaries from './components/Subsidiaries';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Intro />
       <WhyChooseUs />
       <Subsidiaries />
+      <Footer />
     </>
   );
 }
