@@ -18,8 +18,9 @@ export default function Footer() {
       <div className="flex-1 p-8 md:p-12 lg:px-24 lg:py-20 flex flex-col justify-center">
         
         {/* Label */}
-        <div className="text-sm font-medium mb-8 text-gray-800 flex items-center gap-2">
-          <span className="text-[10px]">◆</span> Contact Us
+        <div className="flex items-center gap-3 mb-8">
+          <div className="w-2 h-2 bg-black rotate-45"></div>
+          <span className="text-[0.85rem] tracking-[0.1em] uppercase font-medium text-gray-800">Contact Us</span>
         </div>
         
         {/* Main Heading */}

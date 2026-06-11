@@ -6,6 +6,7 @@ import Intro from './components/Intro';
 import WhyChooseUs from './components/WhyChooseUs';
 import Subsidiaries from './components/Subsidiaries';
 import Footer from './components/Footer';
+import BottomFooter from './components/BottomFooter';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <WhyChooseUs />
       <Subsidiaries />
       <Footer />
+      <BottomFooter />
     </>
   );
 }
