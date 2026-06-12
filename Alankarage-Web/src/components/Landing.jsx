@@ -2,7 +2,7 @@ import React from 'react';
 
 const Landing = () => {
   return (
-    <div className="landing-bg w-screen min-h-screen bg-cover bg-center bg-no-repeat relative flex flex-col">
+    <div className="landing-bg w-full min-h-screen bg-cover bg-center bg-no-repeat relative flex flex-col">
       <div className="landing-overlay absolute inset-0 z-[1]"></div>
       <div className="relative z-[2] flex flex-col flex-1 px-[5%] py-10 md:py-10">
         <header className="flex justify-between items-center md:flex-row flex-col md:items-center items-start gap-6 md:gap-0">
