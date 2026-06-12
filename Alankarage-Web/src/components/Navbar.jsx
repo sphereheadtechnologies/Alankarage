@@ -1,11 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
-    <header className="flex justify-between items-center w-full relative z-[2]">
+    <header ref={navRef} className="flex justify-between items-center w-full relative z-[2]">
       <div className="flex items-center gap-2">
         <Link to="/" className="flex items-center gap-2 no-underline">
           <div className="w-10 h-10 flex justify-center items-center">
