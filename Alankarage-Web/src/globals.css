@@ -1,9 +1,160 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-inter: 'Inter', sans-serif;
+  /* Font Families */
+  --font-heading: 'Manrope', sans-serif;
+  --font-body: 'Instrument Sans', sans-serif;
+
+  /* Font Sizes */
+  --text-display-l: 40px;
+  --text-xxl: 32px;
+  --text-xl: 24px;
+  --text-l: 18px;
+  --text-m: 16px;
+  --text-r: 12px;
+  --text-s: 10px;
+
+  /* Line Heights */
+  --leading-xl: 42px;
+  --leading-l: 38px;
+  --leading-m: 36px;
+  --leading-s: 18px;
+  --leading-xs: 17px;
+
+  /* Colors */
   --color-gold: #dcb349;
+  
+  --color-blue-10: #F2F7FF;
+  --color-blue-50: #E7EEFA;
+  --color-blue-100: #B4CAEF;
+  --color-blue-200: #90B0E7;
+  --color-blue-300: #5D8CDB;
+  --color-blue-400: #3D76D5;
+  --color-blue-500: #0D54CA;
+
+  --color-grey-10: #F2F2F2;
+  --color-grey-30: #DADADA;
+  --color-grey-50: #B0B1B3;
+  --color-grey-100: #B0B1B3;
+  --color-grey-200: #8A8B8F;
+  --color-grey-300: #55565C;
+  --color-grey-400: #34353C;
+  --color-grey-500: #01030B;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer utilities {
+  /* Responsive Typography Styles */
+  .heading-1 {
+    font-family: var(--font-heading);
+    font-size: var(--text-display-l); /* 40px */
+    line-height: var(--leading-l); /* 38px */
+    @media (min-width: 768px) {
+      font-size: 72px;
+      line-height: 76px;
+    }
+  }
+
+  .heading-2 {
+    font-family: var(--font-heading);
+    font-size: var(--text-display-l); /* 40px */
+    line-height: var(--leading-xl); /* 42px */
+    @media (min-width: 768px) {
+      font-size: 64px;
+      line-height: 68px;
+    }
+  }
+
+  .heading-3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-xxl); /* 32px */
+    line-height: var(--leading-m); /* 36px */
+    @media (min-width: 768px) {
+      font-size: 44px;
+      line-height: 52px;
+    }
+  }
+
+  .subtitle-1 {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl); /* 24px */
+    line-height: normal;
+    @media (min-width: 768px) {
+      font-size: 28px;
+    }
+  }
+
+  .subtitle-2 {
+    font-family: var(--font-heading);
+    font-size: var(--text-l); /* 18px */
+    line-height: normal;
+    @media (min-width: 768px) {
+      font-size: 22px;
+    }
+  }
+
+  .subtitle-3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-m); /* 16px */
+    line-height: normal;
+    @media (min-width: 768px) {
+      font-size: 15px;
+    }
+  }
+
+  .body-large {
+    font-family: var(--font-body);
+    font-size: 20px; /* Fallback for mobile */
+    line-height: normal;
+    @media (min-width: 768px) {
+      font-size: 20px;
+    }
+  }
+
+  .body-medium {
+    font-family: var(--font-body);
+    font-size: var(--text-r); /* 12px */
+    line-height: var(--leading-xs); /* 17px */
+    @media (min-width: 768px) {
+      font-size: 15px;
+      line-height: 22px;
+    }
+  }
+
+  .body-small {
+    font-family: var(--font-body);
+    font-size: var(--text-s); /* 10px */
+    line-height: var(--leading-s); /* 18px */
+    @media (min-width: 768px) {
+      font-size: 14px;
+      line-height: normal;
+    }
+  }
+
+  .body-xs {
+    font-family: var(--font-body);
+    font-size: 10px;
+    line-height: 18px;
+    @media (min-width: 768px) {
+      font-size: 12px;
+      line-height: 20px;
+    }
+  }
+
+  .caption {
+    font-family: var(--font-body);
+    font-size: var(--text-r); /* 12px */
+    line-height: normal;
+  }
 }
 
 /* Landing background image — needs raw CSS for url() */

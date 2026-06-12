@@ -8,10 +8,10 @@ const BottomFooter = () => {
         <div className="max-w-[1400px] mx-auto">
 
           {/* Main Footer Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr_1.5fr] gap-12 lg:gap-16">
+          <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr_0.8fr_1.5fr] gap-12 lg:gap-16 py-12">
 
-            {/* Left Column — Logo + Text + Button */}
-            <div className="flex flex-col gap-8 py-12 lg:pr-12">
+            {/* Left Column (Desktop) / Top Section (Mobile) */}
+            <div className="flex flex-col gap-8 lg:pr-12">
               {/* Logo */}
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 flex justify-center items-center">
@@ -34,82 +34,101 @@ const BottomFooter = () => {
               </div>
 
               {/* Text */}
-              <p className="text-[0.95rem] leading-[1.6] text-gray-700 max-w-[400px]">
+              <p className="body-medium text-gray-700 max-w-[400px]">
                 We wholeheartedly believe in the value of our work, and we are committed to giving back to the greater community with the skills and experience we have honed in our repertoire.
               </p>
 
-              {/* Contact Us Button */}
-              <div>
+              {/* Desktop Button */}
+              <div className="hidden lg:block">
                 <a
-                  href="#contact"
-                  className="inline-block bg-black text-white no-underline px-8 py-3 text-[0.85rem] font-medium cursor-pointer hover:bg-gray-800 transition-colors duration-300"
+                  href="/contact"
+                  className="inline-block bg-black text-white no-underline px-8 py-3 body-medium font-medium cursor-pointer hover:bg-gray-800 transition-colors duration-300"
                 >
-                  Contact US
+                  Contact us
                 </a>
               </div>
             </div>
 
-            {/* Middle Column — Navigation Links */}
-            <div className="flex flex-col gap-4 py-12 lg:px-12">
-              <a href="#about" className="text-gray-700 no-underline text-[0.95rem] font-normal transition-colors duration-300 hover:text-black">About Us</a>
-              <a href="#why" className="text-gray-700 no-underline text-[0.95rem] font-normal transition-colors duration-300 hover:text-black">Why Us</a>
-              <a href="#services" className="text-gray-700 no-underline text-[0.95rem] font-normal transition-colors duration-300 hover:text-black">Services</a>
-              <a href="#partners" className="text-gray-700 no-underline text-[0.95rem] font-normal transition-colors duration-300 hover:text-black">Partners</a>
-              <a href="#contact" className="text-gray-700 no-underline text-[0.95rem] font-normal transition-colors duration-300 hover:text-black">Contact Us</a>
+            {/* Mobile 2-column Grid Container */}
+            <div className="grid grid-cols-[1.2fr_0.8fr] gap-8 lg:contents">
+              
+              {/* Middle Column (Desktop) / Right Column (Mobile) */}
+              <div className="flex flex-col gap-4 lg:px-12 order-2 lg:order-none">
+                <a href="/#about" className="text-gray-700 no-underline body-medium font-normal transition-colors duration-300 hover:text-black">About Us</a>
+                <a href="/#why" className="text-gray-700 no-underline body-medium font-normal transition-colors duration-300 hover:text-black">Why Us</a>
+                <a href="/#services" className="text-gray-700 no-underline body-medium font-normal transition-colors duration-300 hover:text-black">Services</a>
+                <a href="/#partners" className="text-gray-700 no-underline body-medium font-normal transition-colors duration-300 hover:text-black">Partners</a>
+                <a href="/contact" className="text-gray-700 no-underline body-medium font-normal transition-colors duration-300 hover:text-black">Contact Us</a>
+              </div>
+
+              {/* Right Column (Desktop) / Left Column (Mobile) */}
+              <div className="flex flex-col gap-8 order-1 lg:order-none">
+                {/* Address */}
+                <div>
+                  <h4 className="body-medium tracking-[0.15em] uppercase font-medium text-gray-400 mb-2">Address</h4>
+                  <p className="body-medium text-gray-700 max-w-[320px]">
+                    Level 05, East Lower Block,<br />
+                    Echelon Square,<br />
+                    World Trade Centre,<br />
+                    Colombo 01
+                  </p>
+                </div>
+
+                {/* Website */}
+                <div>
+                  <h4 className="body-medium tracking-[0.15em] uppercase font-medium text-gray-400 mb-2">Website</h4>
+                  <a href="mailto:info@alankarage.com" className="body-medium text-gray-700 no-underline hover:text-black transition-colors duration-300 break-words">
+                    info@alankarage.com
+                  </a>
+                </div>
+
+                {/* Contact Number */}
+                <div>
+                  <h4 className="body-medium tracking-[0.15em] uppercase font-medium text-gray-400 mb-2">Contact Number</h4>
+                  <a href="tel:+94766666688" className="body-medium text-gray-700 no-underline hover:text-black transition-colors duration-300">
+                    +94 76 666 6688
+                  </a>
+                </div>
+
+                {/* Mobile Button */}
+                <div className="lg:hidden mt-2">
+                  <a
+                    href="/contact"
+                    className="inline-block bg-black text-white no-underline px-8 py-3 body-medium font-medium cursor-pointer hover:bg-gray-800 transition-colors duration-300"
+                  >
+                    Contact us
+                  </a>
+                </div>
+              </div>
+
             </div>
-
-            {/* Right Column — Contact Info */}
-            <div className="flex flex-col gap-8 py-12">
-              {/* Address */}
-              <div>
-                <h4 className="text-[0.75rem] tracking-[0.15em] uppercase font-medium text-gray-400 mb-2">Address</h4>
-                <p className="text-[0.95rem] leading-[1.6] text-gray-700 max-w-[320px]">
-                  Level 05, East Lower Block, Echelon Square, World Trade Center, Bank of Ceylon Mawatha, Colombo 00100, Sri Lanka.
-                </p>
-              </div>
-
-              {/* Website */}
-              <div>
-                <h4 className="text-[0.75rem] tracking-[0.15em] uppercase font-medium text-gray-400 mb-2">Website</h4>
-                <a href="mailto:info@alankarage.com" className="text-[0.95rem] text-gray-700 no-underline hover:text-black transition-colors duration-300">
-                  info@alankarage.com
-                </a>
-              </div>
-
-              {/* Contact Number */}
-              <div>
-                <h4 className="text-[0.75rem] tracking-[0.15em] uppercase font-medium text-gray-400 mb-2">Contact Number</h4>
-                <a href="tel:+94766666688" className="text-[0.95rem] text-gray-700 no-underline hover:text-black transition-colors duration-300">
-                  +94 76 666 6688
-                </a>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-300">
-        <div className="px-8 md:px-12 lg:px-20 py-5">
-          <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            {/* Copyright */}
-            <p className="text-[0.65rem] tracking-[0.05em] uppercase text-gray-400 text-center md:text-left leading-relaxed">
-              2026 © ALANKARAGE HOLDINGS SRI LANKA | ALL RIGHTS RESERVED. DESIGNED AND DEVELOPED BY SPHEREHEAD
-            </p>
-
+        <div className="px-6 md:px-12 lg:px-20 py-8 md:py-5">
+          <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4">
+            
             {/* Legal Links */}
-            <div className="flex items-center gap-8 md:gap-12">
-              <a href="#" className="text-[0.7rem] tracking-[0.12em] uppercase font-medium text-gray-700 no-underline hover:text-gray-900 transition-colors duration-300">
-                PRIVACY POLICY
+            <div className="flex items-center justify-between w-full md:w-auto gap-2 md:gap-12 order-1 md:order-2">
+              <a href="#" className="body-small tracking-[0.1em] md:tracking-[0.12em] uppercase font-medium text-gray-700 no-underline hover:text-gray-900 transition-colors duration-300 text-center">
+                Privacy Policy
               </a>
-              <a href="#" className="text-[0.7rem] tracking-[0.12em] uppercase font-medium text-gray-700 no-underline hover:text-gray-900 transition-colors duration-300">
-                LEGAL POLICIES
+              <a href="#" className="body-small tracking-[0.1em] md:tracking-[0.12em] uppercase font-medium text-gray-700 no-underline hover:text-gray-900 transition-colors duration-300 text-center">
+                Legal Policies
               </a>
-              <a href="#" className="text-[0.7rem] tracking-[0.12em] uppercase font-medium text-gray-700 no-underline hover:text-gray-900 transition-colors duration-300">
-                TERMS OF SERVICES
+              <a href="#" className="body-small tracking-[0.1em] md:tracking-[0.12em] uppercase font-medium text-gray-700 no-underline hover:text-gray-900 transition-colors duration-300 text-center">
+                Terms of Services
               </a>
             </div>
+
+            {/* Copyright */}
+            <p className="body-small uppercase text-gray-400 text-center md:text-left order-2 md:order-1 mt-2 md:mt-0">
+              2026 © ALANKARAGE HOLDINGS SRI LANKA | ALL RIGHTS RESERVED.<br className="md:hidden" />
+              DESIGNED AND DEVELOPED BY SPHEREHEAD
+            </p>
           </div>
         </div>
       </div>

@@ -1,25 +1,16 @@
 import React from 'react';
-import Landing from './components/Landing';
-import AboutUs from './components/AboutUs';
-import Services from './components/Services';
-import Intro from './components/Intro';
-import WhyChooseUs from './components/WhyChooseUs';
-import Subsidiaries from './components/Subsidiaries';
-import Footer from './components/Footer';
-import BottomFooter from './components/BottomFooter';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import ContactUs from './pages/ContactUs';
 
 function App() {
   return (
-    <>
-      <Landing />
-      <AboutUs />
-      <Services />
-      <Intro />
-      <WhyChooseUs />
-      <Subsidiaries />
-      <Footer />
-      <BottomFooter />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/contact" element={<ContactUs />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
