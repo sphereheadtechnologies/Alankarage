@@ -1,4 +1,5 @@
 import React from 'react';
+import wtcImage from '../assets/Footer/wtc.png';
 
 export default function Footer() {
   return (
@@ -9,7 +10,7 @@ export default function Footer() {
         <div 
           className="absolute inset-0 bg-cover bg-center grayscale"
           style={{ 
-            backgroundImage: "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')" 
+            backgroundImage: `url(${wtcImage})` 
           }}
         />
       </div>
