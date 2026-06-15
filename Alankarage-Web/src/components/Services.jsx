@@ -108,12 +108,30 @@ const Services = () => {
       style={{ height: `${servicesData.length * 100}vh` }}
     >
       <section
-        className="sticky top-0 h-screen grid grid-cols-[1fr_1.25fr] overflow-hidden"
+        className="sticky top-0 h-[100dvh] grid grid-cols-1 md:grid-cols-[1fr_1.25fr] overflow-hidden bg-[#0a0a0a]"
         id="services"
       >
-        {/* Left Panel — Image + Description */}
-        <div className="bg-[#0a0a0a] flex flex-col">
-          <div className="relative w-full aspect-[1.84] overflow-hidden">
+        {/* Main Panel (Mobile & Desktop Left) */}
+        <div className="flex flex-col h-full pt-6 md:pt-0">
+          
+          {/* Mobile Title */}
+          <div className="md:hidden px-6 pb-5 shrink-0">
+            <AnimatePresence mode="wait">
+              <motion.h2
+                key={`title-${activeService.id}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="text-white text-[1.7rem] font-medium tracking-tight"
+              >
+                {activeService.title}
+              </motion.h2>
+            </AnimatePresence>
+          </div>
+
+          {/* Image */}
+          <div className="relative w-full h-[40vh] md:h-auto md:aspect-[1.84] overflow-hidden shrink-0">
             <AnimatePresence mode="wait">
               <motion.img
                 key={activeService.id}
@@ -128,7 +146,7 @@ const Services = () => {
             </AnimatePresence>
           </div>
 
-          <div className="flex-1 flex flex-col justify-between pt-10 pr-4 pb-10 pl-12">
+          <div className="flex-1 flex flex-col px-6 pt-6 pb-6 md:pt-10 md:pr-4 md:pb-10 md:pl-12 overflow-y-auto">
             <AnimatePresence mode="wait">
               <motion.p
                 key={activeService.id}
@@ -136,7 +154,7 @@ const Services = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.35 }}
-                className="text-[#999] text-[1rem] leading-[1.7] max-w-[480px]"
+                className="text-[#999] text-[0.9rem] md:text-[1rem] leading-[1.6] md:leading-[1.7] max-w-[480px] mb-6 md:mb-auto"
               >
                 {activeService.description}
               </motion.p>
@@ -144,7 +162,7 @@ const Services = () => {
 
             <a
               href="#"
-              className="flex items-center justify-between text-[#e0e0e0] no-underline text-[1rem] font-normal tracking-wide pb-3 border-b border-[#444] max-w-[440px] transition-colors duration-300 hover:text-gold hover:border-gold"
+              className="flex items-center justify-between text-[#e0e0e0] no-underline text-[0.95rem] md:text-[1rem] font-normal tracking-wide pb-3 border-b border-[#444] w-full md:max-w-[440px] transition-colors duration-300 hover:text-gold hover:border-gold mb-8 md:mb-0"
             >
               <span>View More</span>
               <svg
@@ -161,11 +179,25 @@ const Services = () => {
                 <polyline points="7 7 17 7 17 17" />
               </svg>
             </a>
+
+            {/* Mobile Pagination */}
+            <div className="md:hidden flex items-center justify-center gap-4 mt-auto pt-4">
+              {servicesData.map((service, index) => (
+                <span
+                  key={service.id}
+                  className={`text-[0.8rem] tracking-wider transition-colors duration-300 ${
+                    index === activeIndex ? 'text-[#dcb349] font-medium' : 'text-[#444]'
+                  }`}
+                >
+                  {service.number}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Right Panel — Service List (vertically centered on active item) */}
-        <div className="bg-[#0a0a0a] relative overflow-hidden">
+        {/* Right Panel — Service List (Desktop Only) */}
+        <div className="hidden md:block relative overflow-hidden">
           <div className="absolute top-[40%] left-0 right-0 px-16">
             <ul
               ref={listRef}
@@ -185,7 +217,7 @@ const Services = () => {
                       }`}
                   >
                     <span
-                      className={`text-sm font-semibold min-w-[28px] transition-colors duration-400 ${isActive ? 'text-gold' : 'text-[#444]'
+                      className={`text-sm font-semibold min-w-[28px] transition-colors duration-400 ${isActive ? 'text-[#dcb349]' : 'text-[#444]'
                         }`}
                     >
                       {service.number}
