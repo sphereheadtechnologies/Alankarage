@@ -151,7 +151,7 @@ const WhyChooseUs = () => {
   }, [scrollYProgress, activeIndex]);
 
   return (
-    <div ref={containerRef} className="relative bg-[#0a0a0a]" style={{ height: `${whyChooseUsData.length * 100}vh` }}>
+    <div id="why" ref={containerRef} className="relative bg-[#0a0a0a]" style={{ height: `${whyChooseUsData.length * 100}vh` }}>
       <section
         className="sticky top-0 h-screen w-full flex flex-col justify-between py-6 md:py-10 lg:py-16 bg-cover bg-center overflow-hidden"
         style={{ backgroundImage: `url('${bgImage}')` }}

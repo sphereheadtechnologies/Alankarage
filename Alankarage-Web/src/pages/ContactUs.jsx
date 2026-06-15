@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import BottomFooter from '../components/BottomFooter';
 import wtcImage from '../assets/Footer/wtc.png';
 
 const ContactUs = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="font-sans text-gray-900 bg-white min-h-screen flex flex-col">
       <Navbar />

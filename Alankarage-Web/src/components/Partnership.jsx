@@ -24,7 +24,7 @@ const logos = [
 
 const Partnership = () => {
   return (
-    <section className="bg-white py-16 md:py-24 px-6 md:px-12 lg:px-20">
+    <section id="partners" className="bg-white py-16 md:py-24 px-6 md:px-12 lg:px-20">
       {/* Section label */}
       <div className="flex items-center gap-2 mb-6">
         <span className="diamond"></span>

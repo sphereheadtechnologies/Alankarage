@@ -91,7 +91,7 @@ const subsidiariesData = [
 
 const Subsidiaries = () => {
   return (
-    <section className="bg-white text-black py-15 lg:py-25 px-6 md:px-12 lg:px-24 font-sans relative">
+    <section id="subsidiaries" className="bg-white text-black py-15 lg:py-25 px-6 md:px-12 lg:px-24 font-sans relative">
       {/* Top Header Area */}
       <div className="max-w-[1000px] mb-12 md:mb-32">
         <div className="flex items-center gap-3 mb-6">

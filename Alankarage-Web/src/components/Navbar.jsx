@@ -65,10 +65,10 @@ const Navbar = () => {
     >
       <div className="flex justify-between items-center w-full max-w-[1400px] mx-auto px-[5%] lg:px-20 py-4 md:py-6 transition-all duration-300">
         <div className="flex items-center gap-2">
-          <Link to="/" className="flex items-center gap-2 no-underline">
-          <img src={logoImage} alt="Alankarage Holdings" className="h-10 w-auto object-contain" />
-        </Link>
-      </div>
+          <Link to="/" className="flex items-center gap-2 no-underline" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <img src={logoImage} alt="Alankarage Holdings" className="h-10 w-auto object-contain" />
+          </Link>
+        </div>
 
       <button 
         className="md:hidden text-white"
@@ -82,11 +82,11 @@ const Navbar = () => {
 
       <nav className="hidden md:block">
         <ul className="flex list-none gap-6 md:gap-12 flex-wrap m-0 p-0">
-          <li><a href="/#about" className="text-white/90 no-underline text-[0.95rem] font-normal transition-opacity duration-300 hover:text-white">About Us</a></li>
-          <li><a href="/#why" className="text-white/90 no-underline text-[0.95rem] font-normal transition-opacity duration-300 hover:text-white">Why Us</a></li>
-          <li><a href="/#services" className="text-white/90 no-underline text-[0.95rem] font-normal transition-opacity duration-300 hover:text-white">Services</a></li>
-          <li><a href="/#subsidiaries" className="text-white/90 no-underline text-[0.95rem] font-normal transition-opacity duration-300 hover:text-white">Subsidiaries</a></li>
-          <li><a href="/#partners" className="text-white/90 no-underline text-[0.95rem] font-normal transition-opacity duration-300 hover:text-white">Partners</a></li>
+          <li><Link to="/#about" className="text-white/90 no-underline text-[0.95rem] font-normal transition-opacity duration-300 hover:text-white">About Us</Link></li>
+          <li><Link to="/#why" className="text-white/90 no-underline text-[0.95rem] font-normal transition-opacity duration-300 hover:text-white">Why Us</Link></li>
+          <li><Link to="/services" className="text-white/90 no-underline text-[0.95rem] font-normal transition-opacity duration-300 hover:text-white">Services</Link></li>
+          <li><Link to="/#subsidiaries" className="text-white/90 no-underline text-[0.95rem] font-normal transition-opacity duration-300 hover:text-white">Subsidiaries</Link></li>
+          <li><Link to="/#partners" className="text-white/90 no-underline text-[0.95rem] font-normal transition-opacity duration-300 hover:text-white">Partners</Link></li>
           <li><Link to="/contact" className="text-white/90 no-underline text-[0.95rem] font-normal transition-opacity duration-300 hover:text-white">Contact Us</Link></li>
         </ul>
       </nav>
@@ -105,7 +105,7 @@ const Navbar = () => {
             {/* Top Bar matching main header padding */}
             <div className="flex justify-between items-center w-full px-[5%] py-6">
               <div className="flex items-center gap-2">
-                <Link to="/" className="flex items-center gap-2 no-underline" onClick={() => setIsOpen(false)}>
+                <Link to="/" className="flex items-center gap-2 no-underline" onClick={() => { setIsOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
                   <img src={logoImage} alt="Alankarage Holdings" className="h-10 w-auto object-contain" />
                 </Link>
               </div>
@@ -124,19 +124,19 @@ const Navbar = () => {
             <nav className="w-full px-[12%] mt-12">
               <ul className="flex flex-col list-none m-0 p-0 gap-8">
                 <li className="border-b border-[#333] pb-2">
-                   <a href="/#about" className="text-white/90 no-underline text-[1.05rem] font-normal tracking-wide block w-full" onClick={() => setIsOpen(false)}>About Us</a>
+                   <Link to="/#about" className="text-white/90 no-underline text-[1.05rem] font-normal tracking-wide block w-full" onClick={() => setIsOpen(false)}>About Us</Link>
                 </li>
                 <li className="border-b border-[#333] pb-2">
-                   <a href="/#why" className="text-white/90 no-underline text-[1.05rem] font-normal tracking-wide block w-full" onClick={() => setIsOpen(false)}>Why Us</a>
+                   <Link to="/#why" className="text-white/90 no-underline text-[1.05rem] font-normal tracking-wide block w-full" onClick={() => setIsOpen(false)}>Why Us</Link>
                 </li>
                 <li className="border-b border-[#333] pb-2">
-                   <a href="/#services" className="text-white/90 no-underline text-[1.05rem] font-normal tracking-wide block w-full" onClick={() => setIsOpen(false)}>Services</a>
+                   <Link to="/services" className="text-white/90 no-underline text-[1.05rem] font-normal tracking-wide block w-full" onClick={() => setIsOpen(false)}>Services</Link>
                 </li>
                 <li className="border-b border-[#333] pb-2">
-                   <a href="/#subsidiaries" className="text-white/90 no-underline text-[1.05rem] font-normal tracking-wide block w-full" onClick={() => setIsOpen(false)}>Subsidiaries</a>
+                   <Link to="/#subsidiaries" className="text-white/90 no-underline text-[1.05rem] font-normal tracking-wide block w-full" onClick={() => setIsOpen(false)}>Subsidiaries</Link>
                 </li>
                 <li className="border-b border-[#333] pb-2">
-                   <a href="/#partners" className="text-white/90 no-underline text-[1.05rem] font-normal tracking-wide block w-full" onClick={() => setIsOpen(false)}>Partners</a>
+                   <Link to="/#partners" className="text-white/90 no-underline text-[1.05rem] font-normal tracking-wide block w-full" onClick={() => setIsOpen(false)}>Partners</Link>
                 </li>
                 <li className="border-b border-[#333] pb-2">
                    <Link to="/contact" className="text-white/90 no-underline text-[1.05rem] font-normal tracking-wide block w-full" onClick={() => setIsOpen(false)}>Contact Us</Link>
