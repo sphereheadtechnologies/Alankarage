@@ -1,4 +1,5 @@
 import React from 'react';
+import logoImage from '../assets/logo.png';
 
 const BottomFooter = () => {
   return (
@@ -14,23 +15,7 @@ const BottomFooter = () => {
             <div className="flex flex-col gap-8 lg:pr-12">
               {/* Logo */}
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 flex justify-center items-center">
-                  <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-black">
-                    <path d="M24 2C24 2 28 10 24 16C20 10 24 2 24 2Z" fill="currentColor" />
-                    <path d="M24 46C24 46 20 38 24 32C28 38 24 46 24 46Z" fill="currentColor" />
-                    <path d="M46 24C46 24 38 28 32 24C38 20 46 24 46 24Z" fill="currentColor" />
-                    <path d="M2 24C2 24 10 20 16 24C10 28 2 24 2 24Z" fill="currentColor" />
-                    <path d="M38.5 8.5C38.5 8.5 34.5 16.5 28 14C32 9 38.5 8.5 38.5 8.5Z" fill="currentColor" />
-                    <path d="M9.5 39.5C9.5 39.5 13.5 31.5 20 34C16 39 9.5 39.5 9.5 39.5Z" fill="currentColor" />
-                    <path d="M9.5 8.5C9.5 8.5 16 9 20 14C13.5 16.5 9.5 8.5 9.5 8.5Z" fill="currentColor" />
-                    <path d="M38.5 39.5C38.5 39.5 32 39 28 34C34.5 31.5 38.5 39.5 38.5 39.5Z" fill="currentColor" />
-                    <circle cx="24" cy="24" r="3" fill="currentColor" />
-                  </svg>
-                </div>
-                <div className="text-xl tracking-wide flex flex-col leading-tight">
-                  <span className="font-semibold">ALANKARAGE</span>
-                  <span className="font-light text-[0.95rem]">HOLDINGS</span>
-                </div>
+                <img src={logoImage} alt="Alankarage Holdings" className="h-12 w-auto object-contain invert" />
               </div>
 
               {/* Text */}
