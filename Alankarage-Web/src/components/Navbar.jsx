@@ -55,9 +55,10 @@ const Navbar = () => {
   }, [isOpen]);
 
   return (
-    <header 
-      ref={navRef} 
-      className={`fixed top-0 left-0 w-full z-[50] transition-transform duration-300 ${
+    <>
+      <header 
+        ref={navRef} 
+        className={`fixed top-0 left-0 w-full z-[50] transition-transform duration-300 ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       } ${
         isScrolled ? 'bg-[#0a0a0a] shadow-lg' : 'bg-transparent'
@@ -91,6 +92,7 @@ const Navbar = () => {
         </ul>
       </nav>
       </div>
+      </header>
 
       {/* Mobile Full-Screen Overlay */}
       <AnimatePresence>
@@ -146,7 +148,7 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 };
 
