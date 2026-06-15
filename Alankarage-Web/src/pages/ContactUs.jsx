@@ -6,18 +6,15 @@ import wtcImage from '../assets/Footer/wtc.png';
 const ContactUs = () => {
   return (
     <div className="font-sans text-gray-900 bg-white min-h-screen flex flex-col">
+      <Navbar />
+      
       {/* Hero Section */}
       <div 
         className="relative w-full h-[30vh] bg-cover bg-center grayscale flex flex-col"
         style={{ backgroundImage: `url(${wtcImage})` }}
       >
         <div className="absolute inset-0 bg-black/40 z-[1]"></div>
-        <div className="relative z-[2] px-8 md:px-12 lg:px-20 py-10">
-          <div className="max-w-[1400px] w-full mx-auto">
-            <Navbar />
-          </div>
-        </div>
-        <div className="relative z-[2] flex-1 flex items-center pb-12 md:pb-20 px-8 md:px-12 lg:px-20">
+        <div className="relative z-[2] flex-1 flex items-center pt-24 pb-12 md:pb-20 px-8 md:px-12 lg:px-20">
           <div className="max-w-[1400px] w-full mx-auto">
             <h1 className="text-white heading-1">
               Connect with us

@@ -5,7 +5,33 @@ import logoImage from '../assets/logo.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const lastScrollY = useRef(0);
   const navRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY.current) {
+        setIsVisible(true);
+      }
+      
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -29,9 +55,17 @@ const Navbar = () => {
   }, [isOpen]);
 
   return (
-    <header ref={navRef} className="flex justify-between items-center w-full relative z-[2]">
-      <div className="flex items-center gap-2">
-        <Link to="/" className="flex items-center gap-2 no-underline">
+    <header 
+      ref={navRef} 
+      className={`fixed top-0 left-0 w-full z-[50] transition-transform duration-300 ${
+        isVisible ? 'translate-y-0' : '-translate-y-full'
+      } ${
+        isScrolled ? 'bg-[#0a0a0a] shadow-lg' : 'bg-transparent'
+      }`}
+    >
+      <div className="flex justify-between items-center w-full max-w-[1400px] mx-auto px-[5%] lg:px-20 py-4 md:py-6 transition-all duration-300">
+        <div className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2 no-underline">
           <img src={logoImage} alt="Alankarage Holdings" className="h-10 w-auto object-contain" />
         </Link>
       </div>
@@ -56,6 +90,7 @@ const Navbar = () => {
           <li><Link to="/contact" className="text-white/90 no-underline text-[0.95rem] font-normal transition-opacity duration-300 hover:text-white">Contact Us</Link></li>
         </ul>
       </nav>
+      </div>
 
       {/* Mobile Full-Screen Overlay */}
       <AnimatePresence>
