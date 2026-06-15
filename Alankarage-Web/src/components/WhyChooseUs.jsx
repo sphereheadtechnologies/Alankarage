@@ -79,14 +79,37 @@ const WhyChooseUs = () => {
   useEffect(() => {
     const updateWidth = () => {
       if (trackRef.current) {
-        const scrollWidth = trackRef.current.scrollWidth;
-        const padding = window.innerWidth > 1024 ? 150 : 50;
-        setMaxTranslate(Math.max(0, scrollWidth - window.innerWidth + padding));
+        // Calculate the width manually to avoid flex container measurement glitches
+        const isLg = window.innerWidth >= 1024;
+        const isMd = window.innerWidth >= 768;
+        
+        const activeWidth = isLg ? 480 : (isMd ? 440 : 300);
+        const inactiveWidth = isLg ? 280 : (isMd ? 280 : 240);
+        const gap = isMd ? 24 : 16;
+        
+        // 5 items total: 1 active, 4 inactive
+        const totalItems = whyChooseUsData.length;
+        const totalCardsWidth = activeWidth + (totalItems - 1) * inactiveWidth;
+        const totalGapsWidth = (totalItems - 1) * gap;
+        
+        // Track right padding
+        const trackRightPadding = isLg ? 80 : (isMd ? 48 : 24);
+        
+        // Total scrollable width
+        const scrollWidth = totalCardsWidth + totalGapsWidth + trackRightPadding;
+        
+        // Left padding of the container wrapper
+        const containerLeftPadding = isLg ? 80 : (isMd ? 48 : 24);
+        
+        // We add an extra margin to ensure the last card isn't touching the right screen edge
+        const extraMargin = 50;
+        
+        setMaxTranslate(Math.max(0, scrollWidth + containerLeftPadding - window.innerWidth + extraMargin));
       }
     };
 
     // Slight delay to ensure DOM is fully rendered before measuring
-    setTimeout(updateWidth, 100);
+    setTimeout(updateWidth, 200);
     window.addEventListener('resize', updateWidth);
     return () => window.removeEventListener('resize', updateWidth);
   }, []);
@@ -155,45 +178,38 @@ const WhyChooseUs = () => {
             <motion.div
               ref={trackRef}
               style={{ x }}
-              className="flex items-end gap-4 md:gap-6"
+              className="flex items-end gap-4 md:gap-6 pr-6 md:pr-12 lg:pr-20"
             >
               {whyChooseUsData.map((item, index) => {
                 const isActive = index === activeIndex;
                 return (
                   <motion.div
-                    layout
                     key={item.id}
                     className={`flex flex-col relative transition-all duration-500 ease-in-out shrink-0 overflow-hidden ${isActive
-                      ? "justify-center bg-white p-6 md:p-8 lg:p-10 w-[300px] md:w-[440px] lg:w-[480px] h-[50vh] min-h-[320px] max-h-[400px] shadow-2xl text-black"
-                      : "justify-end bg-[#1a1a1a]/40 backdrop-blur-md border border-white/10 p-5 md:p-6 lg:p-8 w-[240px] md:w-[280px] h-[40vh] min-h-[240px] max-h-[320px] text-white hover:bg-[#1a1a1a]/60"
+                      ? "bg-white p-6 md:p-8 lg:p-10 w-[300px] md:w-[440px] lg:w-[480px] h-[50vh] min-h-[320px] max-h-[400px] shadow-2xl text-black"
+                      : "bg-[#1a1a1a]/40 backdrop-blur-md border border-white/10 p-5 md:p-6 lg:p-8 w-[240px] md:w-[280px] h-[40vh] min-h-[240px] max-h-[320px] text-white hover:bg-[#1a1a1a]/60"
                       }`}
                   >
-                    <motion.div layout className={`mb-3 md:mb-6 ${isActive ? 'text-black' : 'opacity-80'}`}>
-                      {item.icon}
-                    </motion.div>
+                    <div className="flex flex-col w-full transition-all duration-500 ease-in-out mt-auto">
+                      <div className={`mb-3 md:mb-6 transition-colors duration-500 ${isActive ? 'text-black' : 'opacity-80'}`}>
+                        {item.icon}
+                      </div>
 
-                    <motion.h3
-                      layout
-                      className={`font-medium tracking-tight whitespace-pre-line ${isActive ? 'text-[1.4rem] md:text-[1.7rem] mb-3 md:mb-4' : 'text-[1.05rem] md:text-[1.2rem] leading-[1.3]'
-                        }`}
-                    >
-                      {isActive ? item.title : item.title.replace(' ', '\n')}
-                    </motion.h3>
+                      <h3
+                        className={`font-medium tracking-tight transition-all duration-500 ${isActive ? 'text-[1.4rem] md:text-[1.7rem] mb-3 md:mb-4' : 'text-[1.05rem] md:text-[1.2rem] leading-[1.3]'
+                          }`}
+                      >
+                        {item.title}
+                      </h3>
 
-                    <AnimatePresence mode="wait">
-                      {isActive && (
-                        <motion.p
-                          key="description"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ delay: 0.1, duration: 0.3 }}
-                          className="text-[#555] text-[0.95rem] md:text-[1rem] leading-[1.6]"
-                        >
-                          {item.description}
-                        </motion.p>
-                      )}
-                    </AnimatePresence>
+                      <div className={`grid transition-all duration-500 ease-in-out ${isActive ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                        <div className="overflow-hidden">
+                          <p className="text-[#555] text-[0.95rem] md:text-[1rem] leading-[1.6]">
+                            {item.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </motion.div>
                 );
               })}
